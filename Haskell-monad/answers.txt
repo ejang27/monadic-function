@@ -1,0 +1,35 @@
+Part III
+
+8. PrimitiveType is declared in the Type.hs file .
+9. BinaryOperator is declared in the Syntax.hs file.
+10. > is GreaterThan and && is LogicalAnd.
+11.a) printString or printLine
+   b) issueError
+12. The pure function "lift a value."(Hoogle) And "Lifting is a concept which allows you to transform a function into a corresponding function within another (usually more general) setting."(wiki.Haskell)
+So the litType function returns just a Type and the pure function transforms the litType function that returns the Type to a Java Type.
+13. binaryExpressionType Plus is checking if the value that was taken in is a string type so it returns a string type. In the other cases, it would return arithmeticExpressionType.
+14. Checks if the argument is convertible to a numeric type.Issues an error if it isn't.
+15. Binary numeric promotion applies when the operands denote a value and can be convertible to a numeric type. It has to follow certain rules. One of them being that when the operand is an reference type, it is converted to corresponding expressions of primitive type.
+    Another being "widening primitive conversion is applied to convert either or both operands as specified by" certain rules.
+    An example of Binary numeric promotion would be as follows,
+    double d = 2.5;
+    int i = 1;
+    d*i;
+    //double*int is promoted to be double*double
+    //prints out 2.5
+16. An example would be,
+    public void printSomething (){
+      System.out.println("Something");
+    }
+
+    public void main(){
+      printSomething(); //evaluates to nothing
+    }
+
+17. 32
+18. Convert a 'Result' to a 'Value', issuing an error for a 'NothingR' result. Basically, takes the result of running an expression and gives back the actual value.
+19. evalBinary it puts the expressions in order that it should be evaluated and then converts them to values.
+20. Checks to see if this is string concatenation or not by using isStringValue (if either one of the operands are a string, then it is a string concatenation). When it is a string concatenation, convert both to string and append them. WHen that is done, it returns a Java Value of the allocated string.
+    And if that is not string concatenation, then do performNumericalOp (which is doing plus to operands which are numbers, either int, float, double or long)
+21. Panic is used when some kind of precondition is not met and not when user types in a mistake. So when binary numeric promotion is done, the operands should be of the same type, but when this assumption is wrong, the panic function is called because this is not a user error.
+22. In noCheck it always returns pure() which returns Java(). An empty tuple contains no information. It indicates success because unlike checkDivisor, there is no occasion where it returns an exception.
